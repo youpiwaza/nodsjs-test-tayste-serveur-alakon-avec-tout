@@ -7,18 +7,19 @@ function fileExtToContentType (fileExtension) {
     //      ATTENTION, je n'ai pas tout récupéré ci-dessous,
     //      uniquement ce qu'il faut pour faire tourner le boilerplate
     switch(fileExtension) {
-        case '.html':
-            return 'text/html';
-        break;
-
+        
         case '.css':
             return 'text/css';
         break;
-
+            
         case '.eot':
             return 'application/vnd.ms-fontobject';
         break;
-
+                
+        case '.html':
+            return 'text/html';
+        break;
+        
         case '.ico':
             return 'image/vnd.microsoft.icon';
         break;
