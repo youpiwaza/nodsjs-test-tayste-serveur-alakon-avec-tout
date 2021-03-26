@@ -21,14 +21,14 @@ const server = http.createServer((request, response) => {
         // On a pas de retour et on doit donc passer par un callback de merde
         // EN GROS c'est compliqué de faire remonter les data pour les mettre dans la response http
         //      Du coup je fais descendre la reponse http
-        monModuleGet(`${publicFolderPath}/index.html`, response)
+        monModuleGet(`${publicFolderPath}/index.html`, response);
     }
-    // sinon
-    // else {
-    //     // On renvoie le fichier demandé MAY en tapant dans le dossier ouksé rangé pour pas foutre le bordel
-    //     // ex : './public/_boilerplate/favicon.ico'
-    //     return response.end(monModuleGet(`${publicFolderPath}${myURL.pathname}`));
-    // }
+    // sinon on fait le passe plat (le mec demande "style.css" > je lui envoie "style.css" #braindead)
+    else {
+        // On renvoie le fichier demandé MAY en tapant dans le dossier ouksé rangé pour pas foutre le bordel
+        // ex : './public/_boilerplate/favicon.ico'
+        monModuleGet(`${publicFolderPath}${myURL.pathname}`, response);
+    }
 
     // Ensuite on traite ce que l'on renvoi en fonction des types de fichier
 })
