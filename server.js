@@ -12,7 +12,19 @@ const publicFolderPath  = `./public/_boilerplate`;
 // console.log(`Go clic : http://localhost:${port}/`);
 
 const server = http.createServer((request, response) => {
+    // console.log("request.url", request);
+    console.log("request.url", request.url);
+    // console.log("request.headers.referer", request.headers.referer);
+
+    //// TODO: Fix favicon & fonts KO
+    //      BUG: Si acces direct a la ressource,
+    //          eg. "http://localhost:666/assets/images/favicon.ico" dans le navigateur
+    //          request.url > perd le chemin vers la ressources
+    //          (/favicon.ici est appelée dans le serveur)
+    //      
+
     const myURL = new URL(request.url, `http://${request.headers.host}/`);
+    // const myURL = new URL(request.headers.referer || request.url, `http://${request.headers.host}/`);
     console.log("myURL", myURL);
 
     // Par défaut on renvoie la page HTML
